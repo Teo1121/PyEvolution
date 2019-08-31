@@ -34,7 +34,10 @@ class colony:
         self.r = 50
         self.x = self.r+(WIDTH-self.r*2)*(colony%2)
         self.y = self.r+(HEIGHT-self.r*2)*(colony//3)
-        self.color = (255*(colony >> 1 & 1),255*(colony & 1),255*(colony >> 2 & 1))
+        ##(255*(colony >> 1 & 1),255*(colony & 1),255*(colony >> 2 & 1))
+        self.color = (124*(colony & 1)-115*(colony & 1 and colony >> 1 & 1)+246*(colony >> 1 & 1),
+                      187*(colony & 1)+161*(colony >> 2 & 1)+83*(colony >> 1 & 1 and not (colony & 1)),
+                      241*(colony >> 2 & 1)+20*(colony >> 1 & 1 and not (colony & 1)))
         self.population = 0
         self.score = 0
     def draw(self):
